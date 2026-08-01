@@ -1,0 +1,6 @@
+# 카드에서 제외한 이미지 보관함 (로컬 전용)
+_제외된이미지/
+
+# Windows
+Thumbs.db
+desktop.ini

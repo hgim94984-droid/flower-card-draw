@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>오늘의 꽃 카드뽑기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="fx"></canvas>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="title-wrap">
+      <h1 class="title">오늘의 꽃 카드뽑기</h1>
+      <p class="subtitle"><span id="poolCount">0</span>장의 꽃 중에서 오늘의 <span id="deckCount">8</span>장</p>
+    </div>
+
+    <div class="steps" id="steps">
+      <div class="step" data-step="1"><b>1</b> 오늘의 카드 뽑기</div>
+      <div class="step" data-step="2"><b>2</b> 번호 부르면 뒤집기</div>
+      <div class="step" data-step="3"><b>3</b> 섞어서 한 장</div>
+    </div>
+
+    <div class="topbar-right">
+      <button class="icon-btn" id="btnSound" title="효과음 켜기/끄기" aria-label="효과음">🔊</button>
+      <button class="icon-btn" id="btnSettings" title="설정" aria-label="설정">⚙️</button>
+    </div>
+  </header>
+
+  <div class="settings-panel" id="settingsPanel" hidden>
+    <label class="set-row">
+      <span>처음 카드 면</span>
+      <select id="selFace">
+        <option value="up" selected>그림면</option>
+        <option value="down">뒷면</option>
+      </select>
+    </label>
+    <label class="set-row">
+      <span>카드 장수</span>
+      <select id="selCount">
+        <option value="4">4장</option>
+        <option value="6">6장</option>
+        <option value="8" selected>8장</option>
+        <option value="10">10장</option>
+        <option value="12">12장</option>
+      </select>
+    </label>
+    <label class="set-row">
+      <span>카드 번호 표시</span>
+      <input type="checkbox" id="chkNumbers" checked />
+    </label>
+    <label class="set-row">
+      <span>애니메이션 속도</span>
+      <select id="selSpeed">
+        <option value="1.4">느리게</option>
+        <option value="1" selected>보통</option>
+        <option value="0.7">빠르게</option>
+      </select>
+    </label>
+    <p class="set-hint">설정을 바꾸면 카드를 다시 뽑습니다.</p>
+  </div>
+
+  <main class="stage" id="stage">
+    <div class="deck-pile" id="deckPile">
+      <div class="pile-card"></div>
+      <div class="pile-card"></div>
+      <div class="pile-card"></div>
+      <div class="pile-card"></div>
+      <div class="pile-hint">아래 <b>오늘의 카드 뽑기</b> 버튼을 눌러주세요</div>
+    </div>
+    <div class="board" id="board" aria-live="polite"></div>
+    <div class="board-veil" id="veil"></div>
+  </main>
+
+  <div class="numpad" id="numpad"></div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="btnDeal">🌷 오늘의 카드 뽑기</button>
+    <button class="btn" id="btnRevealAll" disabled>전체 공개</button>
+    <button class="btn" id="btnShuffle" disabled>🔀 카드 섞기</button>
+    <button class="btn btn-accent" id="btnPick" disabled>✨ 한 장 뽑기</button>
+    <button class="btn btn-ghost" id="btnReset">처음부터</button>
+  </div>
+
+  <p class="hint" id="hint"><span>먼저 오늘의 카드를 뽑아주세요.</span></p>
+
+  <p class="keys">단축키 &nbsp;·&nbsp; <kbd>1</kbd>~<kbd>9</kbd> 번호 카드 뒤집기(10번 이상은 위 번호 버튼) &nbsp;·&nbsp; <kbd>D</kbd> 카드뽑기 &nbsp;·&nbsp; <kbd>A</kbd> 전체공개/덮기 &nbsp;·&nbsp; <kbd>S</kbd> 섞기 &nbsp;·&nbsp; <kbd>Space</kbd> 한 장 뽑기 &nbsp;·&nbsp; <kbd>R</kbd> 처음부터</p>
+
+</div>
+
+<script src="flowers.js"></script>
+<script src="names.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
