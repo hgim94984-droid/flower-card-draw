@@ -410,7 +410,7 @@
       + '</div>'
       + '<div class="card-face card-front">'
       + '<div class="front-photo"><img alt="꽃 카드" draggable="false" /></div>'
-      + '<div class="front-label"><span class="front-name"></span><span class="front-num"></span></div>'
+      + '<div class="front-label"><span class="front-name"></span></div>'
       + '</div>'
       + '</div>';
     const img = el.querySelector('img');
@@ -418,7 +418,6 @@
 
     const nameEl = el.querySelector('.front-name');
     nameEl.textContent = item.name || '';
-    if (!item.name) el.querySelector('.front-label').classList.add('no-name');
 
     const card = {
       el: el,
@@ -426,8 +425,7 @@
       flowerName: item.name || '',
       revealed: state.faceUpStart,
       toggled: false,
-      num: el.querySelector('.card-num'),
-      frontNum: el.querySelector('.front-num')
+      num: el.querySelector('.card-num')
     };
 
     el.addEventListener('click', function () {
@@ -452,7 +450,6 @@
   function paintNumbers() {
     state.cards.forEach(function (c) {
       c.num.textContent = String(c.no);
-      c.frontNum.textContent = c.no + '번';
     });
   }
 

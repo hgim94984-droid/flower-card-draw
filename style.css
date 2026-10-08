@@ -424,43 +424,23 @@ body::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
   padding: 0 4px;
+  container-type: inline-size;
   border-top: 1.5px dashed var(--green-soft);
   background: linear-gradient(180deg, rgba(240,250,241,0) 0%, rgba(238,249,240,.92) 100%);
 }
 .front-name {
   font-family: 'Jua', sans-serif;
-  font-size: clamp(13px, 1.65vw, 25px);
-  line-height: 1.15;
+  font-size: 16.5cqw;   /* 카드 너비 기준 — 카드 장수가 바뀌어도 같은 비율 */
+  line-height: 1.1;
   color: var(--green-deep);
   text-align: center;
-  letter-spacing: -.2px;
+  letter-spacing: -.3px;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.front-name::before { content: "❀ "; color: var(--pink); font-size: .8em; }
-.front-name::after { content: " ❀"; color: var(--pink); font-size: .8em; }
-.front-num {
-  font-family: 'Gowun Dodum', sans-serif;
-  font-size: clamp(10px, 1.05vw, 15px);
-  color: #8aa392;
-  letter-spacing: .3px;
-}
-/* 이름이 없는 카드는 번호를 크게 */
-.front-label.no-name .front-name { display: none; }
-.front-label.no-name .front-num {
-  font-family: 'Jua', sans-serif;
-  font-size: clamp(13px, 1.6vw, 24px);
-  color: var(--green-deep);
-}
-.front-label.no-name .front-num::before { content: "❀ "; color: var(--pink); }
-.front-label.no-name .front-num::after { content: " ❀"; color: var(--pink); }
-
-.hide-numbers .front-num { display: none; }
-.hide-numbers .front-label.no-name { opacity: 0; }
 
 .hint.win .win-name { color: var(--green-deep); }
 
